@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "MYOPDF – Make Your Own PDF",
+  "short_name": "MYOPDF",
+  "version": "1.0.0",
+  "description": "Collect the PDF pages you need with a hotkey while reading your courses, then download them as one summary PDF.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "MYOPDF – Make Your Own PDF",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "unlimitedStorage", "tabs", "webRequest", "contextMenus"],
+  "host_permissions": ["<all_urls>"],
+  "commands": {
+    "toggle-page": {
+      "suggested_key": { "default": "Alt+Shift+A", "mac": "Alt+Shift+A" },
+      "description": "Add / remove the current page to your summary"
+    },
+    "undo-last": {
+      "suggested_key": { "default": "Alt+Shift+Z", "mac": "Alt+Shift+Z" },
+      "description": "Undo the last added page"
+    },
+    "open-collection": {
+      "suggested_key": { "default": "Alt+Shift+S", "mac": "Alt+Shift+S" },
+      "description": "Open your summary (review & download)"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="ui.css">
+  <style>
+    body { width: 300px; padding: 16px; background: var(--panel); }
+    .head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .head h1 { font-size: 16px; margin: 0; }
+    .stat { background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+    .stat b { font-size: 26px; color: var(--accent); }
+    .stack { display: grid; gap: 8px; }
+    .stack > * { justify-content: center; width: 100%; }
+    .keys { margin: 14px 0 6px; font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
+    .keys div { display: flex; justify-content: space-between; align-items: center; }
+    .keys kbd { background: var(--bg); border: 1px solid var(--line); }
+    .row { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-top: 12px; }
+    a.link { color: var(--accent); font-size: 12px; cursor: pointer; text-decoration: underline; }
+    .warn { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 14px 0 4px; }
+  </style>
+</head>
+<body>
+  <div class="head"><img src="icons/icon32.png" width="26" height="26" alt=""><h1>MYOPDF</h1></div>
+
+  <div class="stat"><b id="count">0</b> <span id="countLabel">pages in your summary</span>
+    <div id="sources" class="muted small"></div></div>
+
+  <div class="stack">
+    <button id="review" class="primary">Review &amp; download summary</button>
+    <button id="quick">⬇ Quick download</button>
+    <button id="open">Open a PDF from my computer…</button>
+    <button id="clear" class="danger">🗑 Clear summary</button>
+  </div>
+
+  <div class="keys">
+    <div>Add / remove current page <kbd id="k-toggle">–</kbd></div>
+    <div>Undo last page <kbd id="k-undo">–</kbd></div>
+    <div>Open summary <kbd id="k-open">–</kbd></div>
+    <a id="shortcuts" class="link">Change shortcuts</a>
+  </div>
+
+  <hr>
+  <label class="row"><input type="checkbox" id="autoOpen"> Open web PDFs in MYOPDF automatically</label>
+  <p id="fileWarn" class="warn" hidden>To use it with PDFs saved on your computer (file://…), turn on
+    <b>“Allow access to file URLs”</b> on the MYOPDF card in <a id="extPage" class="link">chrome://extensions</a>.</p>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "myopdf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser extension: collect PDF pages with a hotkey and export them as one summary PDF",
+  "scripts": {
+    "build": "node scripts/copy-libs.mjs && node scripts/zip.mjs",
+    "copy-libs": "node scripts/copy-libs.mjs"
+  },
+  "devDependencies": {
+    "pdfjs-dist": "4.10.38",
+    "pdf-lib": "1.17.1"
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MYOPDF</title>
+  <link rel="icon" href="icons/icon32.png">
+  <link rel="stylesheet" href="lib/pdf_viewer.css">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="group grow">
+      <button id="sidebarBtn" class="icon-btn" title="Pages &amp; chapters" aria-pressed="false" hidden>☰</button>
+      <img src="icons/icon32.png" alt="" class="logo">
+      <span id="docName" class="doc-name">MYOPDF</span>
+    </div>
+
+    <div class="group" id="navGroup" hidden>
+      <button id="prevBtn" class="icon-btn" title="Previous page">‹</button>
+      <input id="pageInput" type="number" min="1" value="1" aria-label="Page number">
+      <span id="pageCount" class="muted">/ 0</span>
+      <button id="nextBtn" class="icon-btn" title="Next page">›</button>
+      <span class="sep"></span>
+      <button id="zoomOut" class="icon-btn" title="Zoom out">−</button>
+      <select id="zoomSelect" aria-label="Zoom">
+        <option value="page-width">Fit width</option>
+        <option value="page-fit">Fit page</option>
+        <option value="auto">Auto</option>
+        <option value="0.75">75%</option>
+        <option value="1">100%</option>
+        <option value="1.25">125%</option>
+        <option value="1.5">150%</option>
+        <option value="2">200%</option>
+        <option value="custom" hidden></option>
+      </select>
+      <button id="zoomIn" class="icon-btn" title="Zoom in">+</button>
+      <span class="sep"></span>
+      <input id="findInput" type="search" placeholder="Find in PDF (Ctrl+F)" aria-label="Find">
+      <span id="findStatus" class="muted small"></span>
+    </div>
+
+    <div class="group">
+      <button id="toggleBtn" class="primary" hidden>
+        <span id="toggleLabel">＋ Add page</span>
+        <kbd id="toggleKbd">Alt+Shift+A</kbd>
+      </button>
+      <a id="collectionLink" class="pill" href="collection.html" target="_blank" title="Review & download your summary">
+        Summary <span id="countBadge" class="count">0</span>
+      </a>
+      <button id="nativeBtn" class="icon-btn" title="Open in Chrome's own PDF viewer" hidden>⇱</button>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="sidebar" hidden>
+    <div class="side-tabs" role="tablist">
+      <button id="tabPages" class="side-tab active" role="tab" aria-selected="true">Pages</button>
+      <button id="tabOutline" class="side-tab" role="tab" aria-selected="false">Chapters</button>
+    </div>
+    <div id="thumbList" class="side-panel thumbs" role="tabpanel"></div>
+    <div id="outlineList" class="side-panel outline" role="tabpanel" hidden></div>
+  </aside>
+
+  <div id="viewerContainer">
+    <div id="viewer" class="pdfViewer"></div>
+  </div>
+
+  <section id="dropZone" class="drop-zone" hidden>
+    <div class="drop-card">
+      <img src="icons/icon128.png" alt="" width="72" height="72">
+      <h1>Open a course PDF</h1>
+      <p>Drag a PDF here, or pick one from your computer.<br>
+        PDFs you open from websites (Moodle, Teams, Drive links…) open here automatically.</p>
+      <label class="primary big">
+        Choose PDF file…
+        <input id="fileInput" type="file" accept="application/pdf,.pdf" hidden>
+      </label>
+      <p id="loadError" class="error" hidden></p>
+    </div>
+  </section>
+
+  <div id="loading" class="loading" hidden><div class="spinner"></div><span>Loading PDF…</span></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My summary – MYOPDF</title>
+  <link rel="icon" href="icons/icon32.png">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="collection.css">
+</head>
+<body>
+  <header class="top">
+    <div class="title">
+      <img src="icons/icon32.png" alt="" width="28" height="28">
+      <div>
+        <h1>My summary</h1>
+        <p id="subtitle" class="muted small">Loading…</p>
+      </div>
+    </div>
+    <div class="actions">
+      <label class="check"><input type="checkbox" id="stamp" checked> Label pages with source &amp; page no.</label>
+      <input id="filename" type="text" value="summary.pdf" aria-label="File name">
+      <button id="clearBtn" class="danger" title="Remove every page from your summary">🗑 Clear summary</button>
+      <button id="downloadBtn" class="primary">⬇ Download PDF</button>
+    </div>
+  </header>
+
+  <div class="subbar">
+    <span class="muted small">Drag pages to reorder · click a page to open it</span>
+    <span class="spacer"></span>
+    <button id="sortBtn" class="secondary">Sort by course &amp; page</button>  </div>
+
+  <main id="grid" class="grid"></main>
+
+  <section id="empty" class="empty" hidden>
+    <h2>No pages yet</h2>
+    <p>Open a course PDF, go to a page you need and press <kbd id="kbd">Alt+Shift+A</kbd>.<br>
+      Pages you collect show up here, ready to download as one PDF.</p>
+    <a class="primary big" href="viewer.html">Open a PDF</a>
+  </section>
+
+  <div id="progress" class="progress" hidden><div class="bar"><div id="barFill"></div></div><span id="progressText"></span></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="collection.js"></script>
+</body>
+</html>
